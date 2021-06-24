@@ -1,1 +1,1 @@
-<h3>Django Ecommerce</h3>
+<h3> - Django Ecommerce - </h3>
