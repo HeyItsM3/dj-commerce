@@ -8,7 +8,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .container {
-	min-height: calc(100vh - 1rem);
+	min-height: calc(90vh - 1rem);
 }
 
 .box-element{
@@ -58,6 +58,30 @@ h1,h2,h3,h4,h5,h6{
 .btn{
 	border-radius: 6px;
 }
+
+.btn-outline-success {
+	color: #865439;
+    border-color: #D7B19D;
+}
+
+.btn-outline-success:hover {
+	color: #ececec;
+	background-color: #865439;
+	border-color: #6d3d1c;
+}
+
+.btn-outline-secondary {
+    color: #01937C;
+    border-color: #01937C;
+}
+
+.btn-outline-secondary:hover {
+	color: #ececec;
+	background-color: #01937C;
+	border-color: #01937C;
+}
+
+
 
 .row-image{
 	width: 100px;

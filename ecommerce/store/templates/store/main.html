@@ -10,6 +10,8 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
+	<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
+
 	<script type="text/javascript">
 		var user = '{{request.user}}'
 
@@ -63,7 +65,7 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
-	        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="{% url 'store' %}"> Tienda <span class="sr-only">(current)</span></a>
 	      </li>
 	 
 	    </ul>
