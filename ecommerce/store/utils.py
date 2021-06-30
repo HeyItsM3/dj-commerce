@@ -38,6 +38,7 @@ def cookieCart(request):
                 order['shipping'] = True
         except:
             pass
+		
     return {'cartItems':cartItems, 'order':order, 'items':items}
 
 def cartData(request):
@@ -77,6 +78,6 @@ def guestOrder(request, data):
 		orderItem = OrderItem.objects.create(
 			product=product,
 			order=order,
-			quantity=(item['quantity'] if item['quantity']>0 else -1*item['quantity']), # negative quantity = freebies
+			quantity=(item['quantity'] if item['quantity']>0 else -1*item['quantity']),
 		)
 	return customer, order
