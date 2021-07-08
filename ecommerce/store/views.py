@@ -1,11 +1,102 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
 from django.http import JsonResponse
+from django.db.models import Q
 from .models import *
+from .forms import *
 from .utils import cookieCart, cartData, guestOrder
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 import json
 import datetime
 
 
+
+def searchProduct(request):
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+
+	searchP = request.GET.get("search")
+
+	products = Product.objects.all()
+
+	if searchP:
+		products = Product.objects.filter(
+			Q(name__icontains = searchP) 
+		).distinct()
+
+	context = {'products':products, 'cartItems':cartItems}
+	return render(request, 'store/store.html', context)
+
+
+def registerPage(request):
+		form = CreateUserForm()
+		if request.method == 'POST':
+			form = CreateUserForm(request.POST)
+			if form.is_valid():
+				form.save()
+				user = form.cleaned_data.get('username')
+				messages.success(request, 'Account was created for ' + user)
+
+				return redirect('login')
+
+		context = {'form':form}
+		return render(request, 'store/register.html', context)
+
+def loginPage(request):
+		if request.method == 'POST':
+			username = request.POST.get('username')
+			password =request.POST.get('password')
+
+			user = authenticate(request, username=username, password=password)
+
+			if user is not None:
+				login(request, user)
+				return redirect('search')
+			else:
+				messages.info(request, 'Username OR password is incorrect')
+
+		context = {}
+		return render(request, 'store/login.html', context)
+
+def logoutUser(request):
+	logout(request)
+	return redirect('login')
+
+
+def new_product(request):
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+
+	context = {'cartItems':cartItems}
+	return render(request, 'store/new_product.html', context)
+
+def contact(request):
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+
+	context = {'cartItems':cartItems }
+	return render(request, 'store/contact.html', context)
+
+def categories(request):
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+
+	products = Product.objects.all()[:6]
+	context = {'products':products,'cartItems':cartItems}
+	return render(request, 'store/categories.html', context)
+
+def about(request):
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+
+	context = {'cartItems':cartItems}
+	return render(request, 'store/about.html', context)
 
 def store(request):
 	data = cartData(request)
@@ -14,7 +105,7 @@ def store(request):
 	order = data['order']
 	items = data['items']
 
-	products = Product.objects.all()
+	products = Product.objects.all()[:3]
 	context = {'products':products, 'cartItems':cartItems}
 	return render(request, 'store/store.html', context)
 

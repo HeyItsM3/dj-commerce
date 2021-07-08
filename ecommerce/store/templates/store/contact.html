@@ -1,0 +1,33 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .status-row {
+        display: none;
+    }
+</style>
+
+    <div class="col-lg-6">
+        <div class="box-element" id="form-wrapper">
+            <h3>Contacto</h3>
+            <form id="form">
+            <div id="user-info">
+                <div class="card card-body">
+                    <label>Nombre</label>
+                        <input required class="form-control" type="text" name="name" placeholder="Nombre..">
+                    <br>
+                    <label>Correo</label>
+                        <input required class="form-control" type="email" name="email" placeholder="Email..">
+                    <br>
+                        <div class="form-group">
+                            <label>Mensaje</label>
+                            <textarea class="form-control" rows="3" placeholder="Su mensaje.."></textarea>
+                        </div>
+                    <input id="form-button" class="btn btn-success btn-block" type="submit" value="Enviar" style="max-width: 5rem;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock content %}

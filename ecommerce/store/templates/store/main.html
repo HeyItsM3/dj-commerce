@@ -57,7 +57,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="{% url 'store' %}">JAGUARETE KAA</a>
+	  <a class="navbar-brand" id="navbar-brand" href="{% url 'store' %}">JAGUARETE KAA</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -65,13 +65,30 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
-	        <a class="nav-link" href="{% url 'store' %}"> Tienda <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="{% url 'store' %}"> Inicio <span class="sr-only">(current)</span></a>
+	      </li>
+		  <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'categories' %}"> Categorias <span class="sr-only">(current)</span></a>
+	      </li>
+		  <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'about' %}"> Acerca de <span class="sr-only">(current)</span></a>
+	      </li>
+		  <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'contact' %}"> Contacto <span class="sr-only">(current)</span></a>
+	      </li>
+		  <li disable=True class="nav-item active">
+	        <a  lass="nav-link" href="{% url 'new_product' %}"><span class="sr-only">(current)</span></a>
 	      </li>
 	 
 	    </ul>
 	    <div class="form-inline my-2 my-lg-0">
-	     	<a href="#"class="btn btn-warning">Login</a>
-	     	
+			{% include "./search.html" %}
+
+	     	<a href="{% url 'login' %}"class="btn btn-warning">Login</a>
+
+			<span ><a  class="btn btn-danger" id="btn-logout" href="{% url 'logout' %}">Logout</a></span>
+
+
 	     	<a href="{% url 'cart' %}">
 	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
 	    	</a>
@@ -80,18 +97,50 @@
 	    </div>
 	  </div>
 	</nav>
+	
 
      <div class="container">
             <br>
             {% block content %}
-
-
+			
             {% endblock content %}
-         </div>
+			<br>
+			<div class="status-row">
+				<div class="row">
+					
+					<div class="col-md-12">
+						<h4>Más Productos</h4>
+						<hr>
+						<div class="card card-body">
+							<table class="table table-sm">
+								<tr>
+									{% for product in products %}
+									<div class="cart-row">
+										<div><p>{{product.name}}</p></div>
+										<hr style="padding: 5px;">
+										<div><p>{{product.description}}</p></div>
+									</div>
+									{% endfor %}
+									<th></th>
+									<th style="text-align:left">Titulo</th>
+									<th style="text-align:right">Descripción</th>
+									<th></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+	</div>
+
+
+
 
 
 	<footer id="footer" class="navbar-expand-lg navbar-dark bg-dark">
-		Copyright © JAGUARETE KAA - 2021 
+		
+		Copyright © HeyItsMe - JAGUARETE KAA - 2021 
 	</footer>
 
 
