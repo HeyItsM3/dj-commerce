@@ -34,4 +34,8 @@ pip install Django
 python manage.py runserver
 ```
 
+Datos de usuario:
+u: admin
+p: OxX1gz6SdTRo6Kc@4TDs
+
 
