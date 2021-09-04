@@ -1,4 +1,4 @@
-<h3> - Django Ecommerce - </h3>
+<h2> - Django Ecommerce - </h2>
 
 
 ## Ejecutar este proyecto
