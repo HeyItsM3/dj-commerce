@@ -38,4 +38,6 @@ Datos de usuario:<br>
 u: admin <br>
 p: OxX1gz6SdTRo6Kc@4TDs
 
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HeyItsM3&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats)
+
 
